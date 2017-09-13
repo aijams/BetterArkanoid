@@ -1,0 +1,66 @@
+const check_collision = function(rect, other_rect) {}
+
+const make_ball = function(init_x, init_y, radius) {
+    return {
+        x: init_x
+        y: init_y
+        radius: radius
+		draw: function(ctx) {}
+		update: function(dt) {}
+    }
+}
+
+const make_paddle = function(init_x, init_y, rect) {
+	return {
+		x: init_y
+		y: init_x
+		dx: 0
+		dy: 0
+		draw: function(ctx) {}
+		update: function(dt) {}
+	}
+}
+
+const make_game = function() {
+	return {
+	left_pressed: false
+	right_pressed: false
+	entities = []
+	init: function() {}
+	update: function(dt) {}
+    play_field: {
+        x: 0
+        y: 0
+        width: canvas.width
+        height: canvas.height
+    }
+    key_down_handler: function(e) {
+        if (e.keyCode == 39) {
+            this.right_pressed = true;
+        }
+        if (e.keyCode == 37) {
+            this.left_pressed = true;
+        }
+    }
+    key_up_handler: function(e) {
+	    if (e.keyCode == 39) {
+            this.right_pressed = false;
+        }
+  		if (e.keyCode == 37) {
+    		this.left_pressed = false;
+  		}	
+    }
+    }
+}
+
+const main = function() {
+    var canvas = document.getElementById("main-game-area");
+    var ctx = canvas.getContext("2d");
+	
+	game = make_game()
+    document.addEventListener("keydown", game.key_down_handler, false);
+    document.addEventListener("keyup", game.key_up_handler, false);
+    setInterval(game.update, 10);
+}
+
+main()

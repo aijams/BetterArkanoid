@@ -1,0 +1,4 @@
+TODO:
+
+Make general collision detector between balls and
+rectangles to handle all game collisions.
